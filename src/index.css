@@ -6,7 +6,16 @@
 
 @layer base {
   body {
-    @apply bg-dominant text-textMain font-sans antialiased;
+    @apply bg-dominant text-textMain font-sans antialiased transition-colors duration-300;
+  }
+  .dark body {
+    @apply bg-dark-dominant text-dark-textMain;
+  }
+}
+
+@layer utilities {
+  .glass {
+    @apply bg-white/70 backdrop-blur-md border border-white/20 shadow-sm dark:bg-dark-card/70 dark:border-white/10;
   }
 }
 
