@@ -123,9 +123,9 @@ const App = () => {
       setErrorMsg('');
       setActiveTab('processing');
 
-      const apiKey = import.meta.env.VITE_GEMINI_API_KEY;
+      const apiKey = import.meta.env.VITE_GEMINI_API_KEY || (typeof process !== 'undefined' && process.env?.VITE_GEMINI_API_KEY);
       if (!apiKey) {
-        throw new Error('API Key belum diatur di .env (VITE_GEMINI_API_KEY)');
+        throw new Error('API Key belum terbaca di Vercel. Pastikan sudah set VITE_GEMINI_API_KEY dan lakukan Redeploy (Clear build cache).');
       }
 
       const client = new GoogleGenAI({ apiKey });
